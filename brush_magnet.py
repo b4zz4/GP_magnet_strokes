@@ -593,6 +593,8 @@ class GPMGT_OT_magnet_brush(bpy.types.Operator):
             org_strokes = [s for s in gpl.active.active_frame.strokes if s.select]
 
             for s in org_strokes:
+                if target_line_only and not materials[s.material_index].grease_pencil.show_fill:
+                    continue
                 ## source stroke filter
                 # if source_fill_only and not materials[s.material_index].grease_pencil.show_fill:# negative authorize double (fill + line)
                 #     continue
